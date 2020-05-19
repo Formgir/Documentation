@@ -1,17 +1,26 @@
 @import "font";
 
 :root {
-    --ifm-color-primary: #07c070;
-    --ifm-color-primary-dark: #06ad65;
-    --ifm-color-primary-darker: #06a35f;
+    --ifm-color-primary: #07bf6f;
+    --ifm-color-primary-dark: #06ac64;
+    --ifm-color-primary-darker: #06a25e;
     --ifm-color-primary-darkest: #05864e;
-    --ifm-color-primary-light: #08d37b;
-    --ifm-color-primary-lighter: #08dd81;
-    --ifm-color-primary-lightest: #0df691;
+    --ifm-color-primary-light: #08d27a;
+    --ifm-color-primary-lighter: #08dc80;
+    --ifm-color-primary-lightest: #0bf690;
     --ifm-code-font-size: 95%;
     --ifm-link-hover-decoration: none;
     --ifm-font-family-base: Vazir, sans-serif;
     --ifm-global-radius: 10px;
+}
+
+html[data-theme="dark"] {
+    --ifm-background-surface-color: #27293d;
+    --ifm-background-color: #1e1e2e;
+}
+
+.footer--dark {
+    --ifm-footer-background-color: #27293d;
 }
 
 .docusaurus-highlight-code-line {
