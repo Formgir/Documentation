@@ -1,13 +1,13 @@
 @import "font";
 
 :root {
-    --ifm-color-primary: #3578e5;
-    --ifm-color-primary-dark: #1d68e1;
-    --ifm-color-primary-darker: #1b62d4;
-    --ifm-color-primary-darkest: #1751af;
-    --ifm-color-primary-light: #4e89e8;
-    --ifm-color-primary-lighter: #5a91ea;
-    --ifm-color-primary-lightest: #80aaef;
+    --ifm-color-primary: #07c070;
+    --ifm-color-primary-dark: #06ad65;
+    --ifm-color-primary-darker: #06a35f;
+    --ifm-color-primary-darkest: #05864e;
+    --ifm-color-primary-light: #08d37b;
+    --ifm-color-primary-lighter: #08dd81;
+    --ifm-color-primary-lightest: #0df691;
     --ifm-code-font-size: 95%;
     --ifm-link-hover-decoration: none;
     --ifm-font-family-base: Vazir, sans-serif;
@@ -19,6 +19,18 @@
     display: block;
     margin: 0 calc(-1 * var(--ifm-pre-padding));
     padding: 0 var(--ifm-pre-padding);
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+.ltr {
+    direction: ltr !important;
+}
+
+.text-align-left {
+    text-align: left !important;
 }
 
 .contents__link {
@@ -52,4 +64,21 @@ blockquote p {
     position: absolute;
     margin-right: -1.5rem;
     padding-left: 15rem;
+}
+
+.footer__logo {
+    max-width: 20rem;
+}
+
+.navbar__inner {
+    flex-direction: row-reverse;
+}
+
+.navbar__items {
+    flex-direction: row-reverse;
+}
+
+.navbar__logo {
+    margin-right: unset;
+    margin-left: 0.5rem;
 }
