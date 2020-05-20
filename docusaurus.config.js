@@ -7,7 +7,7 @@ module.exports = {
     organizationName: "formgir",
     projectName: "documentation",
     themeConfig: {
-        disableDarkMode: true,
+        disableDarkMode: false,
         defaultDarkMode: true,
         navbar: {
             title: "فرم گیر",
@@ -17,12 +17,12 @@ module.exports = {
             },
             links: [
                 {
-                    href: "https://github.com/facebook/docusaurus",
+                    href: "#",
                     label: "حساب کاربری",
                     position: "right",
                 },
                 {
-                    href: "https://github.com/facebook/docusaurus",
+                    href: "#",
                     label: "گیت هاب",
                     position: "right",
                 },
@@ -44,7 +44,7 @@ module.exports = {
                 docs: {
                     path: "./docs",
                     routeBasePath: "/",
-                    homePageId: "description",
+                    homePageId: "00-description",
                     sidebarPath: require.resolve("./sidebars.js"),
                     editUrl:
                         "https://github.com/facebook/docusaurus/edit/master/website/",
