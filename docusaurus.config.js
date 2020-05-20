@@ -10,7 +10,7 @@ module.exports = {
         disableDarkMode: false,
         defaultDarkMode: true,
         navbar: {
-            title: "فرم گیر",
+            title: "مستندات فرم گیر",
             logo: {
                 alt: "Logo",
                 src: "img/logo.png",
