@@ -1,7 +1,7 @@
 ---
-id: android-rtl-toast
-title: RTL Toast
-sidebar_label: RTL Toast
+id: 01-prerequisites
+title: فرم گیر چی نیاز داره ؟
+sidebar_label: پیش نیاز ها
 keywords:
     - android
     - toast
