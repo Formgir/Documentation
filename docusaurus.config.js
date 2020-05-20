@@ -1,82 +1,40 @@
 module.exports = {
-    title: "My Site",
-    tagline: "The tagline of my site",
+    title: "فرم گیر",
+    tagline: "مستندات فرم گیر",
     url: "https://your-docusaurus-test-site.com",
     baseUrl: "/",
     favicon: "img/favicon.ico",
-    organizationName: "facebook", // Usually your GitHub org/user name.
-    projectName: "docusaurus", // Usually your repo name.
+    organizationName: "formgir",
+    projectName: "documentation",
     themeConfig: {
+        disableDarkMode: false,
+        defaultDarkMode: true,
         navbar: {
-            title: "My Site",
+            title: "مستندات فرم گیر",
             logo: {
-                alt: "My Site Logo",
-                src: "img/logo.svg",
+                alt: "Logo",
+                src: "img/logo.png",
             },
             links: [
                 {
-                    to: "docs/",
-                    activeBasePath: "docs",
-                    label: "Docs",
-                    position: "left",
+                    href: "#",
+                    label: "حساب کاربری",
+                    position: "right",
                 },
-                { to: "blog", label: "Blog", position: "left" },
                 {
-                    href: "https://github.com/facebook/docusaurus",
-                    label: "GitHub",
+                    href: "#",
+                    label: "گیت هاب",
                     position: "right",
                 },
             ],
         },
         footer: {
             style: "dark",
-            links: [
-                {
-                    title: "Docs",
-                    items: [
-                        {
-                            label: "Style Guide",
-                            to: "docs/",
-                        },
-                        {
-                            label: "Second Doc",
-                            to: "docs/doc2/",
-                        },
-                    ],
-                },
-                {
-                    title: "Community",
-                    items: [
-                        {
-                            label: "Stack Overflow",
-                            href:
-                                "https://stackoverflow.com/questions/tagged/docusaurus",
-                        },
-                        {
-                            label: "Discord",
-                            href: "https://discordapp.com/invite/docusaurus",
-                        },
-                        {
-                            label: "Twitter",
-                            href: "https://twitter.com/docusaurus",
-                        },
-                    ],
-                },
-                {
-                    title: "More",
-                    items: [
-                        {
-                            label: "Blog",
-                            to: "blog",
-                        },
-                        {
-                            label: "GitHub",
-                            href: "https://github.com/facebook/docusaurus",
-                        },
-                    ],
-                },
-            ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            logo: {
+                alt: "Arash Hatami",
+                src: "img/logo-footer.png",
+            },
+            copyright: `.:: Designed For Better World ::.`,
         },
     },
     presets: [
@@ -86,7 +44,7 @@ module.exports = {
                 docs: {
                     path: "./docs",
                     routeBasePath: "/",
-                    homePageId: "description",
+                    homePageId: "00-description",
                     sidebarPath: require.resolve("./sidebars.js"),
                     editUrl:
                         "https://github.com/facebook/docusaurus/edit/master/website/",
@@ -98,6 +56,11 @@ module.exports = {
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.scss"),
+                },
+                sitemap: {
+                    cacheTime: 600 * 1000,
+                    changefreq: "weekly",
+                    priority: 0.5,
                 },
             },
         ],

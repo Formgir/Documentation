@@ -1,17 +1,26 @@
 @import "font";
 
 :root {
-    --ifm-color-primary: #3578e5;
-    --ifm-color-primary-dark: #1d68e1;
-    --ifm-color-primary-darker: #1b62d4;
-    --ifm-color-primary-darkest: #1751af;
-    --ifm-color-primary-light: #4e89e8;
-    --ifm-color-primary-lighter: #5a91ea;
-    --ifm-color-primary-lightest: #80aaef;
+    --ifm-color-primary: #07bf6f;
+    --ifm-color-primary-dark: #06ac64;
+    --ifm-color-primary-darker: #06a25e;
+    --ifm-color-primary-darkest: #05864e;
+    --ifm-color-primary-light: #08d27a;
+    --ifm-color-primary-lighter: #08dc80;
+    --ifm-color-primary-lightest: #0bf690;
     --ifm-code-font-size: 95%;
     --ifm-link-hover-decoration: none;
     --ifm-font-family-base: Vazir, sans-serif;
     --ifm-global-radius: 10px;
+}
+
+html[data-theme="dark"] {
+    --ifm-background-surface-color: #27293d;
+    --ifm-background-color: #1e1e2e;
+}
+
+.footer--dark {
+    --ifm-footer-background-color: #27293d;
 }
 
 .docusaurus-highlight-code-line {
@@ -19,6 +28,18 @@
     display: block;
     margin: 0 calc(-1 * var(--ifm-pre-padding));
     padding: 0 var(--ifm-pre-padding);
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+.ltr {
+    direction: ltr !important;
+}
+
+.text-align-left {
+    text-align: left !important;
 }
 
 .contents__link {
@@ -37,8 +58,16 @@ blockquote p {
 .table-of-contents__left-border {
     border-left: none !important;
     border-right-color: var(--ifm-toc-border-color);
-    border-right-style: solid;
+    border-right-style: dashed;
     border-right-width: 1px;
+}
+
+.table-of-contents__link {
+    transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.2s;
+}
+
+.menu__link {
+    transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.2s;
 }
 
 .markdown p {
@@ -52,4 +81,21 @@ blockquote p {
     position: absolute;
     margin-right: -1.5rem;
     padding-left: 15rem;
+}
+
+.footer__logo {
+    max-width: 20rem;
+}
+
+.navbar__inner {
+    flex-direction: row-reverse;
+}
+
+.navbar__items {
+    flex-direction: row-reverse;
+}
+
+.navbar__logo {
+    margin-right: unset;
+    margin-left: 0.5rem;
 }

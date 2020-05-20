@@ -1,2 +1,3 @@
 # Documentation
-Documentation of formgir
+
+![banner](github/banner.png)
