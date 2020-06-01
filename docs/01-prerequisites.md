@@ -3,13 +3,13 @@ id: 01-prerequisites
 title: فرم گیر چی نیاز داره ؟
 sidebar_label: پیش نیاز ها
 keywords:
-    - android
-    - toast
-    - android toast
-    - rtl
-    - rtl toast
-    - android rtl
-    - android rtl toast
+    - formgir
+    - فرمگیر
+    - فرم گیر
+    - فرم
+    - form
+    - forms
+    - formget
 ---
 
-ش
+برای کار با فرمگیر به هیچ چیز خاصی نیاز ندارید. سرور ، دامنه اضافی ، رکورد های DNS و ... اینجا وجود نداره. فقط با استفاده از آدرسی که به شما داده میشه نیازهاتون رو برآورده کنید.

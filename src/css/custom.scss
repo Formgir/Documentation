@@ -70,10 +70,25 @@ blockquote p {
     transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.2s;
 }
 
-.markdown p {
-    direction: rtl;
-    text-align: justify;
-    text-align-last: right;
+.markdown {
+    h3 {
+        color: var(--ifm-color-primary);
+    }
+
+    p {
+        direction: rtl;
+        text-align: justify;
+        text-align-last: right;
+
+        img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #56d29b;
+        }
+    }
 }
 
 .hash-link {
