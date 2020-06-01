@@ -1,7 +1,7 @@
 module.exports = {
     title: "فرم گیر",
     tagline: "مستندات فرم گیر",
-    url: "https://your-docusaurus-test-site.com",
+    url: "https://formg.ir",
     baseUrl: "/",
     favicon: "img/favicon.ico",
     organizationName: "formgir",
@@ -47,12 +47,12 @@ module.exports = {
                     homePageId: "00-description",
                     sidebarPath: require.resolve("./sidebars.js"),
                     editUrl:
-                        "https://github.com/facebook/docusaurus/edit/master/website/",
+                        "https://github.com/Formgir/Documentation/tree/master/",
                 },
                 blog: {
                     showReadingTime: true,
                     editUrl:
-                        "https://github.com/facebook/docusaurus/edit/master/website/blog/",
+                        "https://github.com/Formgir/Documentation/tree/master/blog/",
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.scss"),
