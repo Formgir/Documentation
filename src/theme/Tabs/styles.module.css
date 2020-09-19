@@ -6,9 +6,9 @@
  */
 
 .tabItem {
-  margin-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 .tabItem:focus {
-  background-color: var(--ifm-hover-overlay);
+    background-color: var(--ifm-hover-overlay);
 }

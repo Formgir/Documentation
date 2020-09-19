@@ -4,75 +4,104 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import renderRoutes from "@docusaurus/renderRoutes";
+import Layout from "@theme/Layout";
+import DocSidebar from "@theme/DocSidebar";
+import MDXComponents from "@theme/MDXComponents";
+import NotFound from "@theme/NotFound";
+import { matchPath } from "@docusaurus/router";
+import Head from "@docusaurus/Head";
+import styles from "./styles.module.css";
 
-import React from 'react';
-import {MDXProvider} from '@mdx-js/react';
+// This theme is not coupled to Algolia, but can we do something else?
+// Note the last version is also indexed with "last", to avoid breaking search on new releases
+// See https://github.com/facebook/docusaurus/issues/3391
+function DocSearchVersionHeader({ version, isLast }) {
+    const versions = isLast ? [version, "latest"] : [version];
+    return (
+        <Head>
+            <meta
+                name="docsearch:version"
+                content={
+                    // See https://github.com/facebook/docusaurus/issues/3391#issuecomment-685594160
+                    versions.join(",")
+                }
+            />
+        </Head>
+    );
+}
 
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import renderRoutes from '@docusaurus/renderRoutes';
-import Layout from '@theme/Layout';
-import DocItem from '@theme/DocItem';
-import DocSidebar from '@theme/DocSidebar';
-import MDXComponents from '@theme/MDXComponents';
-import NotFound from '@theme/NotFound';
-import {matchPath} from '@docusaurus/router';
-
-import styles from './styles.module.css';
+function DocPageContent({ currentDocRoute, versionMetadata, children }) {
+    const { siteConfig, isClient } = useDocusaurusContext();
+    const {
+        permalinkToSidebar,
+        docsSidebars,
+        version,
+        isLast,
+    } = versionMetadata;
+    const sidebarName = permalinkToSidebar[currentDocRoute.path];
+    const sidebar = docsSidebars[sidebarName];
+    return (
+        <>
+            <DocSearchVersionHeader version={version} isLast={isLast} />
+            <Layout key={isClient}>
+                <div className={styles.docPage}>
+                    {sidebar && (
+                        <div
+                            className={styles.docSidebarContainer}
+                            role="complementary"
+                        >
+                            <DocSidebar
+                                key={
+                                    // Reset sidebar state on sidebar changes
+                                    // See https://github.com/facebook/docusaurus/issues/3414
+                                    sidebarName
+                                }
+                                sidebar={sidebar}
+                                path={currentDocRoute.path}
+                                sidebarCollapsible={
+                                    siteConfig.themeConfig
+                                        ?.sidebarCollapsible ?? true
+                                }
+                            />
+                        </div>
+                    )}
+                    <main className={styles.docMainContainer}>
+                        <MDXProvider components={MDXComponents}>
+                            {children}
+                        </MDXProvider>
+                    </main>
+                </div>
+            </Layout>
+        </>
+    );
+}
 
 function DocPage(props) {
-  const {route: baseRoute, docsMetadata, location, content} = props;
-  const {
-    permalinkToSidebar,
-    docsSidebars,
-    version,
-    isHomePage,
-    homePagePath,
-  } = docsMetadata;
+    const {
+        route: { routes: docRoutes },
+        versionMetadata,
+        location,
+    } = props;
+    const currentDocRoute = docRoutes.find((docRoute) =>
+        matchPath(location.pathname, docRoute)
+    );
 
-  // Get case-sensitive route such as it is defined in the sidebar.
-  const currentRoute = !isHomePage
-    ? baseRoute.routes.find((route) => {
-        return matchPath(location.pathname, route);
-      }) || {}
-    : {};
+    if (!currentDocRoute) {
+        return <NotFound {...props} />;
+    }
 
-  const sidebar = isHomePage
-    ? content.metadata.sidebar
-    : permalinkToSidebar[currentRoute.path];
-  const {
-    siteConfig: {themeConfig: {sidebarCollapsible = true} = {}} = {},
-    isClient,
-  } = useDocusaurusContext();
-
-  if (!isHomePage && Object.keys(currentRoute).length === 0) {
-    return <NotFound {...props} />;
-  }
-
-  return (
-    <Layout version={version} key={isClient}>
-      <div className={styles.docPage}>
-        {sidebar && (
-          <div className={styles.docSidebarContainer}>
-            <DocSidebar
-              docsSidebars={docsSidebars}
-              path={isHomePage ? homePagePath : currentRoute.path}
-              sidebar={sidebar}
-              sidebarCollapsible={sidebarCollapsible}
-            />
-          </div>
-        )}
-        <main className={styles.docMainContainer}>
-          <MDXProvider components={MDXComponents}>
-            {isHomePage ? (
-              <DocItem content={content} />
-            ) : (
-              renderRoutes(baseRoute.routes)
-            )}
-          </MDXProvider>
-        </main>
-      </div>
-    </Layout>
-  );
+    return (
+        <DocPageContent
+            currentDocRoute={currentDocRoute}
+            versionMetadata={versionMetadata}
+        >
+            {renderRoutes(docRoutes)}
+        </DocPageContent>
+    );
 }
 
 export default DocPage;

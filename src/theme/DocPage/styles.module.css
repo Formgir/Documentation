@@ -6,28 +6,28 @@
  */
 
 .docPage {
-  display: flex;
-  direction: rtl;
+    display: flex;
+    direction: rtl;
 }
 
 .docSidebarContainer {
-  border-right: 1px solid var(--ifm-toc-border-color);
-  box-sizing: border-box;
-  width: 300px;
-  position: relative;
-  margin-top: calc(-1 * var(--ifm-navbar-height));
+    border-right: 1px solid var(--ifm-toc-border-color);
+    box-sizing: border-box;
+    width: 300px;
+    position: relative;
+    margin-top: calc(-1 * var(--ifm-navbar-height));
 }
 
 .docMainContainer {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 @media (max-width: 996px) {
-  .docPage {
-    display: inherit;
-  }
+    .docPage {
+        display: inherit;
+    }
 
-  .docSidebarContainer {
-    margin-top: 0;
-  }
+    .docSidebarContainer {
+        margin-top: 0;
+    }
 }
