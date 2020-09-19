@@ -22,7 +22,7 @@ module.exports = {
                     position: "right",
                 },
                 {
-                    href: "https://github.com/Formgir",
+                    href: "#",
                     label: "گیت هاب",
                     position: "right",
                 },
