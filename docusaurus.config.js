@@ -3,26 +3,34 @@ module.exports = {
     tagline: "مستندات فرم گیر",
     url: "https://formg.ir",
     baseUrl: "/",
+    onBrokenLinks: "throw",
     favicon: "img/favicon.ico",
     organizationName: "formgir",
     projectName: "documentation",
     themeConfig: {
-        disableDarkMode: false,
-        defaultDarkMode: true,
+        colorMode: {
+            defaultMode: "dark",
+            disableSwitch: true,
+            respectPrefersColorScheme: false,
+        },
+        prism: {
+            theme: require("prism-react-renderer/themes/github"),
+            darkTheme: require("prism-react-renderer/themes/dracula"),
+        },
         navbar: {
             title: "مستندات فرم گیر",
             logo: {
                 alt: "Logo",
                 src: "img/logo.png",
             },
-            links: [
+            items: [
                 {
-                    href: "#",
+                    href: "http://gsm.ir",
                     label: "حساب کاربری",
                     position: "right",
                 },
                 {
-                    href: "#",
+                    href: "http://gsm.ir",
                     label: "گیت هاب",
                     position: "right",
                 },
@@ -42,10 +50,8 @@ module.exports = {
             "@docusaurus/preset-classic",
             {
                 docs: {
-                    path: "./docs",
-                    routeBasePath: "/",
-                    homePageId: "00-description",
                     sidebarPath: require.resolve("./sidebars.js"),
+                    routeBasePath: "/",
                     editUrl:
                         "https://github.com/Formgir/Documentation/tree/master/",
                 },
