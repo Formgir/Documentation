@@ -31,7 +31,7 @@
 }
 
 .copyButton {
-    background: var(--ifm-color-primary);
+    background: rgba(0, 0, 0, 0.3);
     border: none;
     border-radius: var(--ifm-global-radius);
     color: var(--ifm-color-white);

@@ -4,67 +4,61 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import React, {useState, useEffect} from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-
-import styles from './styles.module.css';
-
-const STORAGE_DISMISS_KEY = 'docusaurus.announcement.dismiss';
-const STORAGE_ID_KEY = 'docusaurus.announcement.id';
+import React from "react";
+import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useUserPreferencesContext from "@theme/hooks/useUserPreferencesContext";
+import styles from "./styles.module.css";
 
 function AnnouncementBar() {
-  const {
-    siteConfig: {themeConfig: {announcementBar = {}}} = {},
-  } = useDocusaurusContext();
-  const {id, content, backgroundColor, textColor} = announcementBar;
-  const [isClosed, setClosed] = useState(true);
-  const handleClose = () => {
-    localStorage.setItem(STORAGE_DISMISS_KEY, true);
-    setClosed(true);
-  };
+    const {
+        siteConfig: { themeConfig: { announcementBar = {} } = {} } = {},
+    } = useDocusaurusContext();
+    const {
+        content,
+        backgroundColor,
+        textColor,
+        isCloseable,
+    } = announcementBar;
+    const {
+        isAnnouncementBarClosed,
+        closeAnnouncementBar,
+    } = useUserPreferencesContext();
 
-  useEffect(() => {
-    const viewedId = localStorage.getItem(STORAGE_ID_KEY);
-    const isNewAnnouncement = id !== viewedId;
-
-    localStorage.setItem(STORAGE_ID_KEY, id);
-
-    if (isNewAnnouncement) {
-      localStorage.setItem(STORAGE_DISMISS_KEY, false);
+    if (!content || (isCloseable && isAnnouncementBarClosed)) {
+        return null;
     }
 
-    if (
-      isNewAnnouncement ||
-      localStorage.getItem(STORAGE_DISMISS_KEY) === 'false'
-    ) {
-      setClosed(false);
-    }
-  }, []);
-
-  if (!content || isClosed) {
-    return null;
-  }
-
-  return (
-    <div
-      className={styles.announcementBar}
-      style={{backgroundColor, color: textColor}}
-      role="banner">
-      <div
-        className={styles.announcementBarContent}
-        dangerouslySetInnerHTML={{__html: content}}
-      />
-
-      <button
-        type="button"
-        className={styles.announcementBarClose}
-        onClick={handleClose}
-        aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  );
+    return (
+        <div
+            className={styles.announcementBar}
+            style={{
+                backgroundColor,
+                color: textColor,
+            }}
+            role="banner"
+        >
+            <div
+                className={clsx(styles.announcementBarContent, {
+                    [styles.announcementBarCloseable]: isCloseable,
+                })} // Developer provided the HTML, so assume it's safe.
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                    __html: content,
+                }}
+            />
+            {isCloseable ? (
+                <button
+                    type="button"
+                    className={styles.announcementBarClose}
+                    onClick={closeAnnouncementBar}
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            ) : null}
+        </div>
+    );
 }
 
 export default AnnouncementBar;

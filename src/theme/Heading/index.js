@@ -6,11 +6,9 @@
  */
 
 /* eslint-disable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid */
-
 import React from "react";
-import classnames from "classnames";
+import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-
 import "./styles.css";
 import styles from "./styles.module.css";
 
@@ -30,15 +28,15 @@ const Heading = (Tag) =>
             <Tag {...props}>
                 <a
                     aria-hidden="true"
-                    tabIndex="-1"
-                    className={classnames("anchor", {
+                    tabIndex={-1}
+                    className={clsx("anchor", {
                         [styles.enhancedAnchor]: !hideOnScroll,
                     })}
                     id={id}
                 />
                 <a
                     aria-hidden="true"
-                    tabIndex="-1"
+                    tabIndex={-1}
                     className="hash-link"
                     href={`#${id}`}
                     title="Direct link to heading"
